@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Camera Filters Sample</string>
+    <string name="mainActivity_welcomeMessage">Hello World!</string>
+</resources>
