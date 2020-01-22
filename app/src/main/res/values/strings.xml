@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Camera Filters Sample</string>
-    <string name="mainActivity_welcomeMessage">Hello World!</string>
+    <string name="mainFragment_welcomeMessage">Hello World!</string>
+    <string name="permissionsFragment_title">Permissions for %s</string>
+    <string name="permissionsFragment_rationaleMessage">To allow us to take rich photos, please provide access to your camera and media storage.</string>
+    <string name="permissionsFragment_requirementsMessage">%s can not continue working without permissions to your camera and media storage. You have to manually provide access in application settings.</string>
+    <string name="permissionsFragment_requestPermissionsButton">Provide access</string>
+    <string name="permissionsFragment_openSettingsButton">Open settings</string>
 </resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/permissionsFragment_topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="32dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/permissionsFragment_titleTextView"
+        style="@style/baseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="@dimen/view_textSize_18sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="@dimen/view_textSize_18sp"
+        app:autoSizeMinTextSize="@dimen/view_textSize_8sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/permissionsFragment_topGuideline"
+        tools:text="Camera" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/permissionsFragment_messageTextView"
+        style="@style/baseTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        app:autoSizeMaxTextSize="@dimen/view_textSize_16sp"
+        app:autoSizeMinTextSize="@dimen/view_textSize_8sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/permissionsFragment_iconImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/permissionsFragment_titleTextView"
+        app:layout_constraintWidth_default="wrap"
+        tools:text="To let us make rich photos please provide access to your camera." />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/permissionsFragment_iconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/permissionsFragment_requestPermissionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/permissionsFragment_messageTextView"
+        app:srcCompat="@drawable/ic_permission_camera" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/permissionsFragment_requestPermissionButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/selector_button_text_view"
+        android:padding="16dp"
+        android:textAllCaps="true"
+        android:textColor="@color/text"
+        android:textSize="@dimen/view_textSize_18sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="@dimen/view_textSize_18sp"
+        app:autoSizeMinTextSize="@dimen/view_textSize_8sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/permissionsFragment_bottomGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_default="wrap"
+        tools:text="Provide access to camera" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/permissionsFragment_bottomGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="32dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

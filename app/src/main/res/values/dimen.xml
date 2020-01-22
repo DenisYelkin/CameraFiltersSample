@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="view_textSize_8sp">8sp</dimen>
+    <dimen name="view_textSize_16sp">16sp</dimen>
+    <dimen name="view_textSize_18sp">18sp</dimen>
+
+    <dimen name="view_textSize">@dimen/view_textSize_16sp</dimen>
+</resources>
