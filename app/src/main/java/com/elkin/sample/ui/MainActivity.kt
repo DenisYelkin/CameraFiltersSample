@@ -2,7 +2,7 @@ package com.elkin.sample.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.elkin.sample.ui.fragment.MainFragment
+import com.elkin.sample.ui.fragment.CameraFragment
 import com.elkin.sample.ui.fragment.PermissionsFragment
 import com.elkin.sample.util.isPermissionsGranted
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(
                 android.R.id.content,
-                if (isPermissionsGranted()) MainFragment() else PermissionsFragment()
+                if (isPermissionsGranted()) CameraFragment() else PermissionsFragment()
             )
             .commit()
     }

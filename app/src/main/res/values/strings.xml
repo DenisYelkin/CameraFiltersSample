@@ -1,9 +1,20 @@
 <resources>
-    <string name="app_name">Camera Filters Sample</string>
+    <string name="app_name" translatable="false">Camera Filters Sample</string>
     <string name="mainFragment_welcomeMessage">Hello World!</string>
     <string name="permissionsFragment_title">Permissions for %s</string>
     <string name="permissionsFragment_rationaleMessage">To allow us to take rich photos, please provide access to your camera and media storage.</string>
     <string name="permissionsFragment_requirementsMessage">%s can not continue working without permissions to your camera and media storage. You have to manually provide access in application settings.</string>
     <string name="permissionsFragment_requestPermissionsButton">Provide access</string>
     <string name="permissionsFragment_openSettingsButton">Open settings</string>
+    <string name="errorFragment_title">Some error occurred</string>
+    <string name="errorFragment_placeholder" translatable="false">:(</string>
+    <string name="errorFragment_backButton">Back</string>
+    <string name="errorFragment_exitButton">Exit</string>
+
+    <string name="cameraError_noSuitableCameraFound">Suitable camera not found.</string>
+    <string name="cameraError_previewNotSupported">Your device is not support showing preview from camera.</string>
+    <string name="cameraError_cameraDisconnected">Camera has been disconnected</string>
+    <string name="cameraError_cameraOpen">An error occurred while opening camera: %s</string>
+    <string name="cameraError_cameraSession">Camera session configuration failed</string>
+    <string name="cameraError_saveImage">Unable to write JPEG image to file</string>
 </resources>

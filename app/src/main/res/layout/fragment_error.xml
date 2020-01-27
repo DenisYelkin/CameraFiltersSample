@@ -7,28 +7,25 @@
     android:background="@color/primary">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/permissionsFragment_topGuideline"
+        android:id="@+id/errorFragment_topGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="32dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/permissionsFragment_titleTextView"
+        android:id="@+id/errorFragment_titleTextView"
         style="@style/baseTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:autoSizeMaxTextSize="@dimen/view_textSize_18sp"
-        app:autoSizeMinTextSize="@dimen/view_textSize_8sp"
-        app:autoSizeTextType="uniform"
+        android:text="@string/errorFragment_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/permissionsFragment_topGuideline"
-        tools:text="Camera" />
+        app:layout_constraintTop_toBottomOf="@+id/errorFragment_topGuideline" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/permissionsFragment_messageTextView"
+        android:id="@+id/errorFragment_descriptionTextView"
         style="@style/baseTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -37,25 +34,27 @@
         app:autoSizeMaxTextSize="@dimen/view_textSize_16sp"
         app:autoSizeMinTextSize="@dimen/view_textSize_8sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/permissionsFragment_iconImageView"
+        app:layout_constraintBottom_toTopOf="@+id/errorFragment_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/permissionsFragment_titleTextView"
-        app:layout_constraintWidth_default="wrap"
-        tools:text="To let us make rich photos please provide access to your camera." />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/permissionsFragment_iconImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/permissionsFragment_requestPermissionButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/permissionsFragment_messageTextView"
-        app:srcCompat="@drawable/ic_permission_camera" />
+        app:layout_constraintTop_toBottomOf="@+id/errorFragment_titleTextView"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Some error message" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/permissionsFragment_requestPermissionButton"
+        android:id="@+id/errorFragment_placeholder"
+        style="@style/baseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/errorFragment_placeholder"
+        android:textSize="128sp"
+        app:layout_constraintBottom_toTopOf="@+id/errorFragment_actionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorFragment_descriptionTextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/errorFragment_actionButton"
         style="@style/baseButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -63,14 +62,14 @@
         app:autoSizeMaxTextSize="@dimen/view_textSize_18sp"
         app:autoSizeMinTextSize="@dimen/view_textSize_8sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/permissionsFragment_bottomGuideline"
+        app:layout_constraintBottom_toTopOf="@+id/errorFragment_bottomGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_default="wrap"
-        tools:text="Provide access to camera" />
+        tools:text="@string/errorFragment_backButton" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/permissionsFragment_bottomGuideline"
+        android:id="@+id/errorFragment_bottomGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

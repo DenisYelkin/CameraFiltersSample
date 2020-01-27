@@ -1,13 +1,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 
     <style name="baseTextView">
         <item name="android:textSize">@dimen/view_textSize</item>
         <item name="android:textColor">@color/text</item>
         <item name="android:textDirection">locale</item>
+    </style>
+
+    <style name="baseTitleTextView" parent="baseTextView">
+        <item name="android:textSize">@dimen/view_textSize_18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="baseButton" parent="baseTextView">
+        <item name="android:background">@drawable/selector_button_text_view</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/view_textSize_18sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

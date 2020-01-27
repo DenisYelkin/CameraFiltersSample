@@ -102,7 +102,7 @@ class PermissionsFragment : Fragment() {
 
     private fun moveToMainState() {
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(android.R.id.content, MainFragment())
+            .replace(android.R.id.content, CameraFragment())
             .commit()
     }
 
