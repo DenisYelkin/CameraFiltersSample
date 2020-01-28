@@ -22,16 +22,16 @@ abstract class SingleClickAdapter : View.OnClickListener {
     private fun canPerform(lastClickTime: Long) =
         (SystemClock.elapsedRealtime() - lastClickTime) >= oneClickThreshold
 
-    override fun onClick(view: View?) {
+    override fun onClick(view: View) {
         if (canPerform()) onOneClick(view)
     }
 
-    abstract fun onOneClick(view: View?)
+    abstract fun onOneClick(view: View)
 }
 
-fun View.setOnSigleClickListener(onClick: (view: View?) -> Unit) {
+fun View.setOnSingleClickListener(onClick: (view: View) -> Unit) {
     this.setOnClickListener(object : SingleClickAdapter() {
-        override fun onOneClick(view: View?) {
+        override fun onOneClick(view: View) {
             onClick(view)
         }
     })

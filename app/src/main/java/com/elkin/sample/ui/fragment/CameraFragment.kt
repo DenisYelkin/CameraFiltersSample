@@ -122,32 +122,38 @@ class CameraFragment : Fragment() {
             this.cameraId = cameraId
         }
 
-        cameraFragment_textureView.holder.addCallback(object : SurfaceHolder.Callback {
-            override fun surfaceDestroyed(holder: SurfaceHolder) = Unit
+        cameraFragment_textureView.onSurfaceReady = {
+            val previewSize =
+                getPreviewOutputSize(cameraFragment_textureView.display, characteristics)
 
-            override fun surfaceChanged(
-                holder: SurfaceHolder,
-                format: Int,
-                width: Int,
-                height: Int
-            ) = Unit
+            if (previewSize == null) {
+                viewModel.setErrorState(
+                    getString(R.string.cameraError_noCompatiblePreviewSize),
+                    false
+                )
 
-            override fun surfaceCreated(holder: SurfaceHolder) {
-                val previewSize =
-                    getPreviewOutputSize(cameraFragment_textureView.display, characteristics)
-                        ?: return
+            } else {
                 Log.d(
                     LOG_TAG,
                     "View finder size: ${cameraFragment_textureView.width} x ${cameraFragment_textureView.height}"
                 )
                 Log.d(LOG_TAG, "Selected preview size: $previewSize")
-                cameraFragment_textureView.holder.setFixedSize(previewSize.width, previewSize.height)
-                cameraFragment_textureView.setAspectRatio(previewSize.width, previewSize.height)
-
-                // To ensure that size is set, initialize camera in the view's thread
-                view.post { openCamera() }
+                view.post {
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        cameraFragment_textureView.setAspectRatio(
+                            previewSize.width,
+                            previewSize.height
+                        )
+                    }
+                    openCamera(previewSize)
+                }
             }
-        })
+        }
+    }
+
+    override fun onPause() {
+        cameraFragment_textureView.onPause()
+        super.onPause()
     }
 
     override fun onStop() {
@@ -194,20 +200,25 @@ class CameraFragment : Fragment() {
 
         allSizes.sortByDescending { it.height * it.width }
 
-        return allSizes.first { it.height <= maxSize.height && it.width <= maxSize.width }
+        return allSizes.firstOrNull { it.height <= maxSize.height && it.width <= maxSize.width }
     }
 
     @SuppressLint("MissingPermission")
-    private fun openCamera() {
+    private fun openCamera(previewSize: Size) {
         cameraManager.openCamera(cameraId, object : CameraDevice.StateCallback() {
             override fun onOpened(device: CameraDevice) {
                 camera = device
-                val size = characteristics.get(
+                val imageReaderSize = characteristics.get(
                     CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP
                 )!!.getOutputSizes(ImageFormat.JPEG).maxBy { it.height * it.width }!!
-                imageReader = ImageReader.newInstance(size.width, size.height, ImageFormat.JPEG, 1)
-                val targets = listOf(cameraFragment_textureView.holder.surface, imageReader.surface)
-                createCaptureSession(targets)
+                imageReader = ImageReader.newInstance(
+                    imageReaderSize.width,
+                    imageReaderSize.height,
+                    ImageFormat.JPEG,
+                    1
+                )
+                val previewSurface = cameraFragment_textureView.getSurface(previewSize)
+                createCaptureSession(previewSurface, listOf(previewSurface, imageReader.surface))
             }
 
             override fun onDisconnected(device: CameraDevice) {
@@ -229,12 +240,12 @@ class CameraFragment : Fragment() {
         }, cameraHandler)
     }
 
-    private fun createCaptureSession(targets: List<Surface>) {
+    private fun createCaptureSession(previewSurface: Surface, targets: List<Surface>) {
         camera.createCaptureSession(targets, object : CameraCaptureSession.StateCallback() {
             override fun onConfigured(session: CameraCaptureSession) {
                 this@CameraFragment.session = session
                 val captureRequest = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
-                    .apply { addTarget(cameraFragment_textureView.holder.surface) }
+                    .apply { addTarget(previewSurface) }
                 session.setRepeatingRequest(captureRequest.build(), null, cameraHandler)
                 viewModel.state.postValue(State.CAMERA_READY)
             }

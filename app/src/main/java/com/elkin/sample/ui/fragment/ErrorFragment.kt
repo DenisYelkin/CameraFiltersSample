@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.elkin.sample.R
 import com.elkin.sample.ui.MainViewModel
-import com.elkin.sample.ui.util.setOnSigleClickListener
+import com.elkin.sample.ui.util.setOnSingleClickListener
 import kotlinx.android.synthetic.main.fragment_error.*
 
 /**
@@ -33,7 +33,7 @@ class ErrorFragment : Fragment() {
         errorFragment_descriptionTextView.text = viewModel.errorMessage
         errorFragment_actionButton
             .setText(if (viewModel.tryAgainAvailable) R.string.errorFragment_backButton else R.string.errorFragment_exitButton)
-        errorFragment_actionButton.setOnSigleClickListener {
+        errorFragment_actionButton.setOnSingleClickListener {
             if (viewModel.tryAgainAvailable) {
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(android.R.id.content, CameraFragment())

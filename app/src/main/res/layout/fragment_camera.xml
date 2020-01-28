@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.elkin.sample.ui.view.AutoFitSurfaceView
+    <com.elkin.sample.ui.view.CameraPreviewView
         android:id="@+id/cameraFragment_textureView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

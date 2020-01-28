@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.elkin.sample.R
-import com.elkin.sample.ui.util.setOnSigleClickListener
+import com.elkin.sample.ui.util.setOnSingleClickListener
 import com.elkin.sample.util.getRequiredPermissions
 import com.elkin.sample.util.isPermissionsGranted
 import kotlinx.android.synthetic.main.fragment_permissions.*
@@ -54,7 +54,7 @@ class PermissionsFragment : Fragment() {
                     if (shouldShowRequestPermissionRationale(permissions[index])) {
                         permissionsFragment_messageTextView.setText(R.string.permissionsFragment_rationaleMessage)
                         permissionsFragment_requestPermissionButton.setText(R.string.permissionsFragment_requestPermissionsButton)
-                        permissionsFragment_requestPermissionButton.setOnSigleClickListener {
+                        permissionsFragment_requestPermissionButton.setOnSingleClickListener {
                             requestPermissions(
                                 requireContext().getRequiredPermissions(),
                                 REQUEST_CODE_PERMISSIONS
@@ -91,7 +91,7 @@ class PermissionsFragment : Fragment() {
             getString(R.string.app_name)
         )
         permissionsFragment_requestPermissionButton.setText(R.string.permissionsFragment_openSettingsButton)
-        permissionsFragment_requestPermissionButton.setOnSigleClickListener {
+        permissionsFragment_requestPermissionButton.setOnSingleClickListener {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             intent.data = Uri.parse("package:${requireContext().packageName}")

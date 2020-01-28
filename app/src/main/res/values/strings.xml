@@ -11,6 +11,7 @@
     <string name="errorFragment_backButton">Back</string>
     <string name="errorFragment_exitButton">Exit</string>
 
+    <string name="cameraError_noCompatiblePreviewSize">No compatible size for preview found.</string>
     <string name="cameraError_noSuitableCameraFound">Suitable camera not found.</string>
     <string name="cameraError_previewNotSupported">Your device is not support showing preview from camera.</string>
     <string name="cameraError_cameraDisconnected">Camera has been disconnected</string>
